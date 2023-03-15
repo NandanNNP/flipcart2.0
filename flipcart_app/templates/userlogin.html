@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+
+        }
+         #login #login-left{
+             height: 448px;
+             width: 204;
+             margin-top: 30px;
+             background-color: #2874f0;
+             margin-left: 280px;
+             width: 260px;
+             float: left;
+             text-align: left;
+             padding: 40px 33px;
+             background-position: center 85%;
+             background-repeat: no-repeat;
+ 
+         }
+         #login #login-left #login-left-title{
+             font-size: 28px;
+             font-weight: 500;
+             color: #fff;
+         }
+         #login #login-left #login-left-disc{
+             font-size: 18px;
+             
+             line-height: 150%;
+             color: #dbdbdb;
+ 
+         }
+         
+         #login #login-right{
+             float: left;
+             height: 500px;
+             width: 400px;
+             background-color: #fff;
+             padding: 56px 35px 16px;
+             margin-top: 30px;
+             text-align: center;
+             
+         }
+         #login #login-right form{
+             padding: 0px 16px;
+         }
+         #login #login-right .form-floating .lab{
+             padding-left: 9px;
+             color: #878787;
+         }
+ 
+         #login #login-right .form-floating .form-control{
+             width: 300px;
+             border: none;
+             border-bottom: 1px solid #e0e0e0;
+             border-radius: 0px;
+             padding: left 0px;
+             position: relative;
+         }
+         #login #login-right .form-floating .form-control:focus{
+             outline: none !important;
+             box-shadow: none!important;
+             border-color: #2874f0;
+         }
+         #login #login-right #privacy{
+             color: #878787;
+             font-size: 12px;
+             font-weight: 400;
+             text-align: justify;
+             margin-bottom: 10px;
+         }
+         #login #login-right #privacy .privacy-link{
+             text-decoration: none;
+         }
+         #login #login-right .btn{
+             background: #fb641b;;
+             color: #fff;
+             width: 100%;
+         }
+         #login #login-right #newuser{
+             color: #2874f0;
+             font-weight: 500;
+             margin-top: 71px;
+ 
+         }
+    </style>
+</head>  
+<body>
+    {% extends 'base.html' %}
+    {% load static %}
+    {% block body %}
+    
+{% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        
+        {{message}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    
+    <!-- <p {% if message.tags %} class="{{ message.tags }}"{% endif %}></p> -->
+    {% endfor %}
+{% endif %}
+<div class="container">
+    <div id="login">
+        <div id="login-left" style="background-image: url({%static 'src/login_img.png'%});">
+            <p id="login-left-title">User Login</p>
+            <p id="login-left-disc">Get access to your Orders, Wishlist and Recommendations</p>
+            <!-- <div id="login-pic-div"><img src="{%static 'src/login_img.png'%}" id="login-pic" alt=""></div> -->
+        </div>
+        <div id="login-right">
+            <center>
+                <form  method="post">{% csrf_token %}
+                    <br>
+                    <div class="form-floating">
+                        <input class="form-control mb-0" id="floatingInput" type="text" name="uname" placeholder="email">
+                        <label for="floatingInput" class="lab">Username</label>
+                    </div>
+                    <br>
+                    <div class="form-floating">
+                        <input class="form-control" id="floatingInput" type="password" name="password" placeholder="password">
+                        <label for="floatingPassword" class="lab">Password</label>
+                    </div>
+                    <br>
+                    <div id="privacy">
+                        By continuing, you agree to Flipkart's
+                        <a class="privacy-link" href="https://www.flipkart.com/pages/terms">Terms of Use</a> and <a class="privacy-link" href="https://www.flipkart.com/pages/privacypolicy">Privacy Policy</a>.
+                    </div>
+                    <input class="btn" type="submit" name="user_form" value="Login"><br>
+                    <div id="newuser">
+                        <a href="http://127.0.0.1:8000/userregister/"  style="text-decoration: none;">New to Flipkart? Create an account</a>
+                    </div>
+                </form>
+            </center>
+        </div>
+    </div>
+</div>
+    {% endblock body %}
+</body>
+</html>

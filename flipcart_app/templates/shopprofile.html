@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <style>
+        #logo{
+            height: 20px;
+            width: 65 px;
+            margin-left: 170px;
+        }
+       
+        #search_btn{
+          border-radius: 0px;
+          
+        }
+        .btn:focus{
+          box-shadow: none;
+          }
+        #serach_box{
+          border-radius: 0px ;
+          
+        }
+        #profile-pic{
+            border-radius: 50% ;
+        }
+        #add{
+          width: 225px;
+          height: 325px;
+          
+
+        }
+        #profile_text{
+          color: white;
+        }
+        #logout{
+          color: white;
+        }
+       #btn-plus{
+          padding-top: 120px;
+          padding-bottom: 122px;
+       }
+       
+        #card-image{
+          height: 151px;
+          width: 100%;
+          object-fit: contain;
+        }
+        #brand-img{
+          text-align: center;
+          margin-top: 5px;
+        }
+      
+       
+       .card,#add{
+        margin: 20px 5px 5px 10px;
+       }
+       
+
+       #card{
+        height: 315px; 
+        width:200px;
+        position: relative;
+        border: none;
+       }
+      
+       #card:hover{
+        transform: scale(1.5cm);
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        filter: grayscale(100%);
+        -webkit-filter: grayscale(100%);
+        transition: filter ease-in-out;
+        background-color: gray;
+        transition: background-color ease-in-out;
+
+       }
+       #card #btn-edit{
+        border: none;
+        background-color: transparent;
+        position: absolute;
+        top: 125px;
+        right: 73px;
+        display: none;
+        
+       }
+       
+       #card #btn-close{
+        cursor: pointer;
+       position: absolute;
+       right: 5px;
+       border: 0;
+       top: 5px;
+       display: none;
+       }
+       #card:hover #btn-edit{
+        display: block;
+        color: white;
+       } 
+       #card:hover #btn-edit #btn-edit-icon{
+        color: white;
+        font-size: 50px;
+       }
+       #card:hover #btn-close{
+        display: block;
+        background-color: rgb(94, 93, 93);
+       } 
+       #btn-close:hover{
+        background-color: rgb(94, 93, 93);
+        color: #fff;
+        opacity: .5;
+       }
+       #btn-edit:hover{
+        color: white;
+        opacity: .5;
+       }
+       .card-body{
+        
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      #brand_disc{
+        width: 150px;
+        display: inline-block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: small;
+      }
+      #brand_name{
+        font-size: medium;
+      } 
+    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/c3a798b755.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary fixed-top">
+      <div class="container-fluid">
+            <!-- logo -->
+          <div class="logo">
+            <a class="navbar-brand" href="http://127.0.0.1:8000/"><img src="https://static-assets-web.flixcart.com/fk-p-linchpin-web/fk-cp-zion/img/flipkart-plus_8d85f4.png" id="logo" alt=""></a>
+          </div>
+        <!-- Profile -->
+        <ul class="navbar-nav mb-2 mb-lg-0">
+          <div id="profile_avatar">
+            <li class="nav-item">
+              <a class="navbar-brand" id="profile_text" href="http://127.0.0.1:8000/shopprofileedit/{{p_id}}">{{p_usn}} <img src="{%static p_pic%}" height="30px" width="30px" id="profile-pic" alt=""></a>   
+            </li>
+          </div>
+          <!-- Logout -->
+          <div id="logout">
+            <li class="nav-item">
+              <a class="navbar-brand" href="http://127.0.0.1:8000/shoplogin/"><i class="fa-solid fa-right-from-bracket text-white"></i></a>
+            </li>
+          </div>
+        </ul>
+        
+      </div><!-- container-fluid -->
+
+      </nav>
+<body>
+  <div class="row my-5">
+
+{% for na,pr,di,ca,im,id in mylist %}
+
+  <div class="col-2">    
+    <div class="card text-center" id="card">
+      <a href="http://127.0.0.1:8000/shopremove/{{id}}/"><button id="btn-close"><i class="fa-solid fa-xmark"></i></button></a>
+      <a href="http://127.0.0.1:8000/shopedit/{{id}}/"><button id="btn-edit"><i id="btn-edit-icon" class="fa-regular fa-pen-to-square"></i></button></a>
+      <div id="brand-img"><img id="card-image" src="{% static im%}" class="card-img-top"  alt="..."></div>
+      <div class="card-body">
+        <div id="brand_name"><p class="card-title">{{na}}</p></div>
+        <div id="brand_disc"><p class="card-text">{{di}}</p></div>
+        <div id="brand_price"><h5 class="card-title">₹{{pr}}</h5></div>
+      </div>
+    </div> 
+</div>
+{% endfor %}
+
+  
+
+  <!-- Adding -->
+  <div class="col-3">
+  <div class="card text-center" id="add">
+    <a href="http://127.0.0.1:8000/shopadd/"><i class="fa-solid fa-plus fa-5x text-secondary" id="btn-plus"></i></a>
+    
+  </div>
+</div>
+</div>
+  
+</body>
+</html>

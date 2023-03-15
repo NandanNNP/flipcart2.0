@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #logo{
+            height: 20px;
+            width: 65 px;
+            margin-left: 170px;
+        }
+       
+        #search_btn{
+          border-radius: 0px;
+          
+        }
+        .btn:focus{
+          box-shadow: none;
+          }
+        #serach_box{
+          border-radius: 0px ;
+          
+        }
+        #profile-pic{
+            border-radius: 50% ;
+        }
+        #add{
+          width: 225px;
+          height: 325px;
+          
+
+        }
+        #profile_text{
+          color: white;
+        }
+        #logout{
+          color: white;
+        }
+       #btn-plus{
+          padding-top: 120px;
+          padding-bottom: 122px;
+       }
+       .form-control{
+        width: 250px;
+       }
+       ::-webkit-input-placeholder { 
+        text-align: center;
+      }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+        <div class="container-fluid">
+              <!-- logo -->
+            <div class="logo">
+              <a class="navbar-brand" href="http://127.0.0.1:8000/"><img src="https://static-assets-web.flixcart.com/fk-p-linchpin-web/fk-cp-zion/img/flipkart-plus_8d85f4.png" id="logo" alt=""></a>
+            </div>
+          <!-- Profile -->
+          <ul class="navbar-nav mb-2 mb-lg-0">
+            <div id="profile_avatar">
+              <li class="nav-item">
+                
+              </li>
+            </div>
+            <!-- Logout -->
+            <div id="logout">
+              <li class="nav-item">
+                <a class="navbar-brand" href="http://127.0.0.1:8000/userlogin/"><i class="fa-solid fa-right-from-bracket text-white"></i></a>
+              </li>
+            </div>
+          </ul>
+          
+        </div><!-- container-fluid -->
+  
+        </nav>
+{% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-danger">
+        {{message}}
+    </div>
+    <!-- <p {% if message.tags %} class="{{ message.tags }}"{% endif %}></p> -->
+    {% endfor %}
+{% endif %}
+<center>
+    <form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
+        <input class="form-control" type="text" name="uname" placeholder="username"><br>
+        <input class="form-control" type="email" name="email" placeholder="email"><br>
+        <input class="form-control" type="number" name="phone" placeholder="phone"><br>
+        <input class="form-control" type="text" name="fname" placeholder="First Name"><br>
+        <input class="form-control" type="text" name="lname" placeholder="Last Name"><br>
+        <input class="form-control" type="password" name="password" id="" placeholder="Password"><br>
+        <input class="form-control" type="password" name="cpassword" id="" placeholder="Confirm Password"><br>
+        <input type="file" name="pic" > <br><br>
+        <input class="btn btn-primary" type="submit" value="Register">
+    </form>
+</center>    
+</body>
+</html>

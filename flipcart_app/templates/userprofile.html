@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://kit.fontawesome.com/c3a798b755.js" crossorigin="anonymous"></script> 
+  <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+body{
+  background-color: #f1f3f6;
+}
+
+/*--------- nav -----------*/
+
+#logo{
+    height: 20px;
+    width: 65 px;
+    margin-left: 170px;
+}
+
+#search_btn{
+  border-radius: 0px;
+  
+}
+.btn:focus{
+  box-shadow: none;
+  }
+#serach_box{
+  border-radius: 0px ;
+  
+}
+#profile-pic{
+    border-radius: 50% ;
+}
+
+#profile_text{
+  color: white;
+}
+#logout{
+  color: white;
+}
+
+/*--------- category nav -----------*/
+#category-nav{
+  background-color: #fff;
+  width: 100%;
+  height: 112.594px;
+  display: flex;
+  justify-content: space-between;
+
+}
+#category-nav .category-nav-items{
+  height: 64px;
+  width: 84px;
+  padding: 12px 8px;
+}
+
+#category-nav .category-image{
+
+  height: 64px;
+  width: 64px;
+}
+#category-nav a{
+  text-decoration: none;
+  text-align: center;
+}
+#category-nav .category-text{
+
+font-weight: 500;
+font-size: 14px;
+color: black;
+
+
+}
+
+
+/*--------- carousel -----------*/
+
+.carousel-inner{
+  padding: 7px;
+}
+.d-block{
+  height: 280px;
+}
+
+
+/*--------- category splitting -----------*/
+
+.row{
+  background-color: #fff;
+  margin: 10px 0px;
+}
+.category{
+  font-size: 20px;
+  line-height: 32px;
+  font-weight: 500;
+  padding-left: 15px;
+  
+}
+.categorydiv{
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #e0e0e0;
+  padding-top: 25px;
+}
+#grocery{
+margin-top: 0px;
+}
+
+/*--------- card -----------*/
+
+#btn-plus{
+  padding-top: 120px;
+  padding-bottom: 122px;
+}
+
+#card-image{
+  height: 151px;
+  width: 100%;
+  object-fit: contain;
+}
+#brand-img{
+  text-align: center;
+  margin-top: 5px;
+}
+
+
+.card{
+  margin: 20px 5px 20px 10px;
+  position: fixed;
+}
+
+
+#card{
+  height: 315px; 
+  width:200px;
+  position: relative;
+  border: none;
+}
+#card:hover{
+  transform: scale(1.5cm);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+#brand_disc{
+  width: 150px;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: small;
+  text-align: center;
+}
+#card:hover #brand_disc a{
+  color: rgb(18, 136, 190);  
+} 
+#brand_name{
+  font-size: medium;
+  color: rgb(163, 163, 163);
+}
+#brand_disc a{
+  text-decoration: none;
+  color: black;
+}
+#dummy-pr{
+  color: rgb(163, 163, 163);
+  font-size: 15px;
+  text-decoration: line-through;
+}
+</style>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary fixed-top">
+        <div class="container-fluid">
+              <!-- logo -->
+            <div class="logo">
+              <a class="navbar-brand" href="http://127.0.0.1:8000/"><img src="https://static-assets-web.flixcart.com/fk-p-linchpin-web/fk-cp-zion/img/flipkart-plus_8d85f4.png" id="logo" alt=""></a>
+            </div>
+          <!-- Profile -->
+          <ul class="navbar-nav mb-2 mb-lg-0">
+            <div id="profile_avatar">
+              <li class="nav-item">
+                <a class="navbar-brand" id="profile_text" href="">{{u_name}} <img src="{%static u_pic%}" height="30px" width="30px" id="profile-pic" alt=""></a>   
+              </li>
+            </div>
+            <!-- Logout -->
+            <div id="logout">
+              <li class="nav-item">
+                <a class="navbar-brand" href="http://127.0.0.1:8000/userlogin/"><i class="fa-solid fa-right-from-bracket text-white"></i></a>
+              </li>
+            </div>
+          </ul>
+          
+        </div><!-- container-fluid -->
+  
+    </nav>
+        <!-- ---------    category nav  ------------ -->
+    <div class="container-fluid mt-5" id="category-nav">
+          <!-- grocery -->
+      
+      <div class="category-nav-items">
+        <a href="" style="text-decoration: none;">
+          <center>
+            <img src="{% static 'src/grocery_nav.webp' %}" class="category-image" alt="">
+            <span class="category-text">Grocery</span>
+          </center>
+        </a>
+      </div>
+          <!-- mobile -->
+      
+      <div class="category-nav-items">
+        <a href="" style="text-decoration: none;">
+          <center>
+            <img src="{% static 'src/mobile_nav.webp' %}" class="category-image" alt="">
+            <span class="category-text">Mobile</span>
+          </center>
+        </a>
+      </div>
+          <!-- fashion -->
+      
+      <div class="category-nav-items">
+        <a href="" style="text-decoration: none;">
+          <center>
+            <img src="{% static 'src/fashion_nav.webp' %}" class="category-image" alt="">
+            <span class="category-text">Fashion</span>
+          </center>
+        </a>
+      </div>
+          <!-- Electronics -->
+      
+      <div class="category-nav-items">
+        <a href="" style="text-decoration: none;">
+          <center>
+            <img src="{% static 'src/electronics_nav.webp' %}" class="category-image" alt="">
+            <span class="category-text">Electronics</span>
+          </center>
+        </a>
+      </div>
+          <!-- Home -->
+      
+      <div class="category-nav-items">
+        <a href="" style="text-decoration: none;">
+          <center>
+            <img src="{% static 'src/home_nav.webp' %}" class="category-image" alt="">
+            <span class="category-text">Home</span>
+          </center>
+        </a>
+      </div>
+          <!-- Apllances -->
+      
+      <div class="category-nav-items">
+        <a href="" style="text-decoration: none;">
+          <center>
+            <img src="{% static 'src/appliances_nav.webp' %}" class="category-image" alt="">
+            <span class="category-text">Apllances</span>
+          </center>
+        </a>
+      </div>
+          <!-- Travel -->
+      
+      <div class="category-nav-items">
+        <a href="" style="text-decoration: none;">
+          <center>
+            <img src="{% static 'src/traval_nav.webp' %}" class="category-image" alt="">
+            <span class="category-text">Travel</span>
+          </center>
+        </a>
+      </div>
+          <!-- Top Offer -->
+      
+      <div class="category-nav-items">
+        <a href="" style="text-decoration: none;">
+          <center>
+            <img src="{% static 'src/save_nav.webp' %}" class="category-image" alt="">
+            <span class="category-text">Top Offer</span>
+          </center>
+        </a>
+      </div>
+          <!-- Toys -->
+      
+      <div class="category-nav-items" style="width: 160px;">
+        <a href="" style="text-decoration: none;">
+          <center>
+            <img src="{% static 'src/toys_nav.webp' %}" class="category-image" alt=""><br>
+            <span class="category-text">Beauty, Toys & More</span>
+          </center>
+        </a>
+      </div>
+          <!-- Two wheeler -->
+      
+      <div class="category-nav-items" style="width: 120px;">
+        <a href="" style="text-decoration: none;">
+          <center>
+            <img src="{% static 'src/twowheeler_nav.webp' %}" class="category-image" alt=""><br>
+            <span class="category-text">Two wheeler</span>
+          </center>
+        </a>
+      </div>
+          
+
+    </div>
+      
+
+
+
+        <!-- ---------    carousel  ------------ -->
+        
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="2000">
+              <img src="{% static 'src/carousel_1.webp' %}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item" data-bs-interval="2000">
+              <img src="{% static 'src/carousel_2.webp' %}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item" data-bs-interval="2000">
+              <img src="{% static 'src/carousel_3.webp' %}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item" data-bs-interval="2000">
+              <img src="{% static 'src/carousel_4.webp' %}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item" data-bs-interval="2000">
+              <img src="{% static 'src/carousel_5.webp' %}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item" data-bs-interval="2000">
+              <img src="{% static 'src/carousel_6.webp' %}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item" data-bs-interval="2000">
+              <img src="{% static 'src/carousel_7.webp' %}" class="d-block w-100" alt="...">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+
+        <!-- ---------    cards   ------------ -->
+
+        <div class="row">
+          <div class="categorydiv">
+          <span class="category" id="grocery"> Grocery </span>
+          </div>
+            {% for na,pr,di,ca,im,id,apr in mylist %}
+              <div class="col-2">    
+                <div class="card text-center" id="card">
+                  <div id="brand-img"><img src="{% static im%}" class="card-img-top" id="card-image" alt="..."></div>
+                  <div class="card-body" >
+                    <div id="brand_name"><p class="card-title">{{na}}</p></div>
+                    <div id="brand_disc"><p class="card-text"><a href="">{{di}}</a></p></div>
+                    <div id="brand_price"><p class="card-title"> <b>₹{{pr}}</b> <span id="dummy-pr">₹{{apr}}</span></p></div>
+                  </div>
+                </div> 
+            </div>
+            {% endfor %}
+        </div>
+        <div class="row">
+          <div class="categorydiv">
+            <span class="category" id=""> Mobile </span>
+          </div>
+            {% for na,pr,di,ca,im,id,apr in mylist2 %}            
+              <div class="col-2">    
+                <div class="card text-center" id="card">
+                  <div id="brand-img"><img src="{% static im%}" class="card-img-top" id="card-image" alt="..."></div>
+                  <div class="card-body" >
+                    <div id="brand_name"><p class="card-title">{{na}}</p></div>
+                    <div id="brand_disc"><p class="card-text"><a href="">{{di}}</a></p></div>
+                    <div id="brand_price"><p class="card-title"> <b>₹{{pr}}</b> <span id="dummy-pr">₹{{apr}}</span></p></div>
+                  </div>
+                </div> 
+            </div>
+            {% endfor %}
+        </div>
+        <div class="row">
+          <div class="categorydiv">
+            <span class="category" id=""> Fashion </span>
+          </div>
+            {% for na,pr,di,ca,im,id,apr in mylist3 %}            
+              <div class="col-2">    
+                <div class="card text-center" id="card">
+                  <div id="brand-img"><img src="{% static im%}" class="card-img-top" id="card-image" alt="..."></div>
+                  <div class="card-body" >
+                    <div id="brand_name"><p class="card-title">{{na}}</p></div>
+                    <div id="brand_disc"><p class="card-text"><a href="">{{di}}</a></p></div>
+                    <div id="brand_price"><p class="card-title"> <b>₹{{pr}}</b> <span id="dummy-pr">₹{{apr}}</span></p></div>
+                  </div>
+                </div> 
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="row">
+          <div class="categorydiv">
+            <span class="category" id=""> Electronics </span>
+          </div>
+            {% for na,pr,di,ca,im,id,apr in mylist4 %}            
+              <div class="col-2">    
+                <div class="card text-center" id="card">
+                  <div id="brand-img"><img src="{% static im%}" class="card-img-top" id="card-image" alt="..."></div>
+                  <div class="card-body" >
+                    <div id="brand_name"><p class="card-title">{{na}}</p></div>
+                    <div id="brand_disc"><p class="card-text"><a href="">{{di}}</a></p></div>
+                    <div id="brand_price"><p class="card-title"> <b>₹{{pr}}</b> <span id="dummy-pr">₹{{apr}}</span></p></div>
+                  </div>
+                </div> 
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="row">
+          <div class="categorydiv">
+            <span class="category" id=""> Home </span>
+          </div>
+            {% for na,pr,di,ca,im,id,apr in mylist5 %}            
+              <div class="col-2">    
+                <div class="card text-center" id="card">
+                  <div id="brand-img"><img src="{% static im%}" class="card-img-top" id="card-image" alt="..."></div>
+                  <div class="card-body" >
+                    <div id="brand_name"><p class="card-title">{{na}}</p></div>
+                    <div id="brand_disc"><p class="card-text"><a href="">{{di}}</a></p></div>
+                    <div id="brand_price"><p class="card-title"> <b>₹{{pr}}</b> <span id="dummy-pr">₹{{apr}}</span></p></div>
+                  </div>
+                </div> 
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="row">
+          <div class="categorydiv">
+            <span class="category" id=""> Apllances </span>
+          </div>
+            {% for na,pr,di,ca,im,id,apr in mylist6 %}            
+              <div class="col-2">    
+                <div class="card text-center" id="card">
+                  <div id="brand-img"><img src="{% static im%}" class="card-img-top" id="card-image" alt="..."></div>
+                  <div class="card-body" >
+                    <div id="brand_name"><p class="card-title">{{na}}</p></div>
+                    <div id="brand_disc"><p class="card-text"><a href="">{{di}}</a></p></div>
+                    <div id="brand_price"><p class="card-title"> <b>₹{{pr}}</b> <span id="dummy-pr">₹{{apr}}</span></p></div>
+                  </div>
+                </div> 
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="row">
+          <div class="categorydiv">
+            <span class="category" id=""> Travel </span>
+          </div>
+            {% for na,pr,di,ca,im,id,apr in mylist7 %}            
+              <div class="col-2">    
+                <div class="card text-center" id="card">
+                  <div id="brand-img"><img src="{% static im%}" class="card-img-top" id="card-image" alt="..."></div>
+                  <div class="card-body" >
+                    <div id="brand_name"><p class="card-title">{{na}}</p></div>
+                    <div id="brand_disc"><p class="card-text"><a href="">{{di}}</a></p></div>
+                    <div id="brand_price"><p class="card-title"> <b>₹{{pr}}</b> <span id="dummy-pr">₹{{apr}}</span></p></div>
+                  </div>
+                </div> 
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="row">
+          <div class="categorydiv">
+            <span class="category" id=""> Topoffer </span>
+          </div>
+            {% for na,pr,di,ca,im,id,apr in mylist8 %}            
+              <div class="col-2">    
+                <div class="card text-center" id="card">
+                  <div id="brand-img"><img src="{% static im%}" class="card-img-top" id="card-image" alt="..."></div>
+                  <div class="card-body" >
+                    <div id="brand_name"><p class="card-title">{{na}}</p></div>
+                    <div id="brand_disc"><p class="card-text"><a href="">{{di}}</a></p></div>
+                    <div id="brand_price"><p class="card-title"> <b>₹{{pr}}</b> <span id="dummy-pr">₹{{apr}}</span></p></div>
+                  </div>
+                </div> 
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="row">
+          <div class="categorydiv">
+            <span class="category" id=""> Toys </span>
+          </div>
+            {% for na,pr,di,ca,im,id,apr in mylist9 %}            
+              <div class="col-2">    
+                <div class="card text-center" id="card">
+                  <div id="brand-img"><img src="{% static im%}" class="card-img-top" id="card-image" alt="..."></div>
+                  <div class="card-body" >
+                    <div id="brand_name"><p class="card-title">{{na}}</p></div>
+                    <div id="brand_disc"><p class="card-text"><a href="">{{di}}</a></p></div>
+                    <div id="brand_price"><p class="card-title"> <b>₹{{pr}}</b> <span id="dummy-pr">₹{{apr}}</span></p></div>
+                  </div>
+                </div> 
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="row">
+          <div class="categorydiv">
+            <span class="category" id=""> Twowheeler </span>
+          </div>
+            {% for na,pr,di,ca,im,id,apr in mylist10 %}            
+              <div class="col-2">    
+                <div class="card text-center" id="card">
+                  <div id="brand-img"><img src="{% static im%}" class="card-img-top" id="card-image" alt="..."></div>
+                  <div class="card-body" >
+                    <div id="brand_name"><p class="card-title">{{na}}</p></div>
+                    <div id="brand_disc"><p class="card-text"><a href="">{{di}}</a></p></div>
+                    <div id="brand_price"><p class="card-title"> <b>₹{{pr}}</b> <span id="dummy-pr">₹{{apr}}</span></p></div>
+                  </div>
+                </div> 
+            </div>
+            {% endfor %}
+        </div>
+
+
+</body>
+</html>
